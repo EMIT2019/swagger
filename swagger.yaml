@@ -1,0 +1,930 @@
+openapi: 3.0.1
+info:
+  title: User Security API
+  description: The USER Security API provides endpoints for managing user security-related operations. It enables authentication, authorization, and user management functionalities within a system. The API offers a set of endpoints to interact with user-related entities, such as operations, options, roles, tokens, and user audits.
+  contact:
+    name: User Security API Team
+    email: usersecurityapiteam@gmail.com
+  version: v1
+servers:
+  - url: http://localhost:8080/security
+    description: Generated server url
+paths:
+  /user/update:
+    put:
+      tags:
+        - user-controller-impl
+      operationId: update
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /user/update-user:
+    put:
+      tags:
+        - user-controller-impl
+      operationId: updateUser
+      parameters:
+        - name: id-affected-user
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: id-author
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /user/delete-user:
+    put:
+      tags:
+        - user-controller-impl
+      operationId: deleteUser
+      parameters:
+        - name: id-affected-user
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: id-author
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /rol/update:
+    put:
+      tags:
+        - rol-controller-impl
+      operationId: update_1
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RolDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RolDto'
+  /rol-user/update:
+    put:
+      tags:
+        - rol-user-controller-impl
+      operationId: update_2
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RolUserDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RolUserDto'
+  /rol-option/update:
+    put:
+      tags:
+        - rol-option-controller-impl
+      operationId: update_3
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RolOptionDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RolOptionDto'
+  /option/update:
+    put:
+      tags:
+        - option-controller-impl
+      operationId: update_4
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OptionDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/OptionDto'
+  /operation/update:
+    put:
+      tags:
+        - operation-controller-impl
+      operationId: update_5
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperationDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/OperationDto'
+  /audit/update:
+    put:
+      tags:
+        - user-audit-controller-impl
+      operationId: update_6
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAuditDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserAuditDto'
+  /user/save:
+    post:
+      tags:
+        - user-controller-impl
+      operationId: save
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /user/save-user:
+    post:
+      tags:
+        - user-controller-impl
+      operationId: saveUser
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /user/login:
+    post:
+      tags:
+        - user-controller-impl
+      operationId: checkLoginCredentials
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /rol/save:
+    post:
+      tags:
+        - rol-controller-impl
+      operationId: save_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RolDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RolDto'
+  /rol-user/save:
+    post:
+      tags:
+        - rol-user-controller-impl
+      operationId: save_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RolUserDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RolUserDto'
+  /rol-option/save:
+    post:
+      tags:
+        - rol-option-controller-impl
+      operationId: save_3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RolOptionDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RolOptionDto'
+  /option/save:
+    post:
+      tags:
+        - option-controller-impl
+      operationId: save_4
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OptionDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/OptionDto'
+  /operation/save:
+    post:
+      tags:
+        - operation-controller-impl
+      operationId: save_5
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperationDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/OperationDto'
+  /audit/save:
+    post:
+      tags:
+        - user-audit-controller-impl
+      operationId: save_6
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAuditDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserAuditDto'
+  /user/user-search:
+    get:
+      tags:
+        - user-controller-impl
+      operationId: getUserByUsername
+      parameters:
+        - name: parameter
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDto'
+  /user/get-by-id:
+    get:
+      tags:
+        - user-controller-impl
+      operationId: getById
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /user/get-all:
+    get:
+      tags:
+        - user-controller-impl
+      operationId: getAll
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDto'
+  /rol/get-by-id:
+    get:
+      tags:
+        - rol-controller-impl
+      operationId: getById_1
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RolDto'
+  /rol/get-all:
+    get:
+      tags:
+        - rol-controller-impl
+      operationId: getAll_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RolDto'
+  /rol-user/get-by-id:
+    get:
+      tags:
+        - rol-user-controller-impl
+      operationId: getById_2
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RolUserDto'
+  /rol-user/get-all:
+    get:
+      tags:
+        - rol-user-controller-impl
+      operationId: getAll_2
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RolUserDto'
+  /rol-option/get-by-id:
+    get:
+      tags:
+        - rol-option-controller-impl
+      operationId: getById_3
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RolOptionDto'
+  /rol-option/get-all:
+    get:
+      tags:
+        - rol-option-controller-impl
+      operationId: getAll_3
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RolOptionDto'
+  /option/get-by-id:
+    get:
+      tags:
+        - option-controller-impl
+      operationId: getById_4
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/OptionDto'
+  /option/get-all:
+    get:
+      tags:
+        - option-controller-impl
+      operationId: getAll_4
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OptionDto'
+  /operation/get-by-id:
+    get:
+      tags:
+        - operation-controller-impl
+      operationId: getById_5
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/OperationDto'
+  /operation/get-all:
+    get:
+      tags:
+        - operation-controller-impl
+      operationId: getAll_5
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OperationDto'
+  /audit/get-by-id:
+    get:
+      tags:
+        - user-audit-controller-impl
+      operationId: getById_6
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserAuditDto'
+  /audit/get-all:
+    get:
+      tags:
+        - user-audit-controller-impl
+      operationId: getAll_6
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserAuditDto'
+  /audit/author:
+    get:
+      tags:
+        - user-audit-controller-impl
+      operationId: getByAuthor
+      parameters:
+        - name: author-name
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserAuditDto'
+  /audit/affected-user:
+    get:
+      tags:
+        - user-audit-controller-impl
+      operationId: getByAffectedUser
+      parameters:
+        - name: user
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserAuditDto'
+  /audit/affected-author:
+    get:
+      tags:
+        - user-audit-controller-impl
+      operationId: getByAffectedAndAuthor
+      parameters:
+        - name: affected
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: author
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserAuditDto'
+  /user/delete:
+    delete:
+      tags:
+        - user-controller-impl
+      operationId: delete
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /rol/delete:
+    delete:
+      tags:
+        - rol-controller-impl
+      operationId: delete_1
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /rol-user/delete:
+    delete:
+      tags:
+        - rol-user-controller-impl
+      operationId: delete_2
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /rol-option/delete:
+    delete:
+      tags:
+        - rol-option-controller-impl
+      operationId: delete_3
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /option/delete:
+    delete:
+      tags:
+        - option-controller-impl
+      operationId: delete_4
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /operation/delete:
+    delete:
+      tags:
+        - operation-controller-impl
+      operationId: delete_5
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /audit/delete:
+    delete:
+      tags:
+        - user-audit-controller-impl
+      operationId: delete_6
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    UserDto:
+      type: object
+      properties:
+        id_user:
+          type: integer
+          format: int64
+        username:
+          type: string
+        name:
+          type: string
+        lastname:
+          type: string
+        password:
+          type: string
+        key:
+          type: string
+        email:
+          type: string
+        state:
+          type: integer
+          format: int64
+    RolDto:
+      type: object
+      properties:
+        id_rol:
+          type: integer
+          format: int64
+        rol_name:
+          type: string
+    RolUserDto:
+      type: object
+      properties:
+        id_rol_user:
+          type: integer
+          format: int64
+        rol:
+          $ref: '#/components/schemas/RolDto'
+        user:
+          $ref: '#/components/schemas/UserDto'
+    OptionDto:
+      type: object
+      properties:
+        id_option:
+          type: integer
+          format: int64
+        option_name:
+          type: string
+    RolOptionDto:
+      type: object
+      properties:
+        id_rol_option:
+          type: integer
+          format: int64
+        rol:
+          $ref: '#/components/schemas/RolDto'
+        option:
+          $ref: '#/components/schemas/OptionDto'
+    OperationDto:
+      type: object
+      properties:
+        id_operation:
+          type: integer
+          format: int64
+        operation_name:
+          type: string
+    UserAuditDto:
+      type: object
+      properties:
+        id_user_audit:
+          type: integer
+          format: int64
+        author:
+          $ref: '#/components/schemas/UserDto'
+        affected_user:
+          $ref: '#/components/schemas/UserDto'
+        username:
+          type: string
+        name:
+          type: string
+        lastname:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+        operation:
+          $ref: '#/components/schemas/OperationDto'
+        date:
+          type: string
